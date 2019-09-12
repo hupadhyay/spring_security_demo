@@ -6,7 +6,7 @@ basic_spring_security/.classpath
 basic_spring_security/.project
 basic_spring_security/.settings/**
 basic_spring_security/.mvn/**
-basic_spring_security/tartget/**
+basic_spring_security/target/**
 basic_spring_security/mvnw.cmd
 basic_spring_security/mvnw*
 
@@ -14,7 +14,7 @@ spring_security_model/.classpath
 spring_security_model/.project
 spring_security_model/.settings/**
 spring_security_model/.mvn/**
-spring_security_model/tartget/**
+spring_security_model/target/**
 spring_security_model/mvnw.cmd
 spring_security_model/mvnw*
 
@@ -22,7 +22,7 @@ spring_security_jwt/.classpath
 spring_security_jwt/.project
 spring_security_jwt/.settings/**
 spring_security_jwt/.mvn/**
-spring_security_jwt/tartget/**
+spring_security_jwt/target/**
 spring_security_jwt/mvnw.cmd
 spring_security_jwt/mvnw*
 
@@ -30,7 +30,7 @@ spring_security_oauth/.classpath
 spring_security_oauth/.project
 spring_security_oauth/.settings/**
 spring_security_oauth/.mvn/**
-spring_security_oauth/tartget/**
+spring_security_oauth/target/**
 spring_security_oauth/mvnw.cmd
 spring_security_oauth/mvnw*
 
