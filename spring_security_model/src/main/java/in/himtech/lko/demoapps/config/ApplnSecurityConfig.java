@@ -24,17 +24,13 @@ public class ApplnSecurityConfig extends WebSecurityConfigurerAdapter {
 		 * -- Method No 1 --
 		 * JDBC Authentication: the below code will use schema.sql to create schema
 		 * It uses method "usersByUsernameQuery" and "authoritiesByUsernameQuery" 
-		 * to query the user credetinal and authorities.
+		 * to query the user credential and authorities.
 		 */
 		auth.jdbcAuthentication().passwordEncoder(pwdEncoder).dataSource(dataSource)
 				.usersByUsernameQuery("select username, password, enabled from users where username =  ?")
 				.authoritiesByUsernameQuery("select username, authority from authorities where username = ?");
 	}
 
-	private String getEncodedPwd(String string) {
-		String pwd = "himserver";
-		return pwdEncoder.encode(pwd);
-	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
