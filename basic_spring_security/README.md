@@ -1,17 +1,14 @@
-### JENKIN and DockerFile example
-this project has jenkin file which help to understand about continuous build and continuous deployment of java project. 
-It is also help you to understand build and push a docker image using jenkin tool. 
+### Basic Spring Security Example
+this project present two ways of authentication and authorization.
 
-### TUTORIAL: Docker configuration in Jenkin:
-https://medium.com/@gustavo.guss/jenkins-building-docker-image-and-sending-to-registry-64b84ea45ee9
+- **Inmemory Authentication**: This is very simple example of Spring security authentication and authorization. It uses "inmemoryAuthentication()" 
+	method of the AuthenticationManagerBuilder. In this case, you need to provide your username, password, and role in the program itself(hardcoded).
+	This example is good to start learning of spring secuirty features. 
+	
+- **Jdbc Authentication**: This is also a basic example of Spring Security. In this case we are using "datasource" and "jdbcAuthentication()" method 
+	method of the AuthenticationManagerBuilder to authenticate and authorize user. In memory database "H2" is used to  provide database to the program.  
 
-### PMD and FindBug
-This project also use PMD and FindBug for static analysis of the code. Maven command to use pmd and findbug is as follows:
-mvn pmd:pmd
-mvn findbug:check
 
-### Swagger 2 Configuration
-This project also demostrate the use and configuration of swagger rest api documentation tool.
 
 
 

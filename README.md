@@ -1,16 +1,12 @@
-### Spring Rest Example
-Springboot based Rest application. Which is using docker container based mysql database to connect with it and make data transactions. 
-For database connetion, mysql container name is used.
-
 ### Spring security examples
-This application contains various way to authenticate and authorized your spring boot application. Inmemory and jdbc authentication. 
-In case of jdbc authentication, It contains example of (in memory and docker mysql)
+Springboot based spring security example projects. It contains four modules which explain four ways
+authentication and authorization. 
+1. **basic_spring_security:** It explains the basic spring security with in memory authentication and authorization.
+2. **spring_security_model:** It explains the spring securit with jdbcAuthentication and external database(mysql) configuration.
+3. **spring_security_jwt:**   It expalains the spring security with JWT token implementations. 
+4. **spring_security_oauth:** It expalins the spring security integration with OAuth2.0 security framwork.
 
-### Maven docker plugin example:
-the maven docker plugin is used to build and push image to docker hub using maven command only.
 
-Following are the link of all the details about the maven docker plugin-in 
-https://github.com/fabric8io/docker-maven-plugin
 
 
 

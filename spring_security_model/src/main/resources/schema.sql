@@ -1,6 +1,6 @@
 CREATE TABLE users(
       username VARCHAR(50) NOT NULL PRIMARY KEY,
-      password VARCHAR(50) NOT NULL,
+      password VARCHAR(150) NOT NULL,
       enabled BOOLEAN NOT NULL);
 
 CREATE TABLE authorities (
