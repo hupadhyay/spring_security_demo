@@ -24,8 +24,21 @@ public class SecurityDemoApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		String credential = pwdEncoder.encode("himserver");
 		
+		String delSql1 = "delete from users";
+		String delSql2 = "delete from authorities";
+		
+		int value = jdbcTemplate.update(delSql2);
+		if(value > 0) {
+			System.out.println("All records of users are deleted!");
+		}
+		
+		value = jdbcTemplate.update(delSql1);
+		if(value > 0) {
+			System.out.println("All records of users are deleted!");
+		}
+		
 		String sql = "INSERT INTO users (username, password, enabled) VALUES ('himanshu', '" + credential +"', true)";
-		int value = jdbcTemplate.update(sql);
+		value = jdbcTemplate.update(sql);
 		if(value > 0) {
 			System.out.println("User Credential inserted successfully!");
 		}
@@ -39,13 +52,13 @@ public class SecurityDemoApplication implements CommandLineRunner{
 		String sql2 = "INSERT INTO authorities (username, authority) VALUES ('himanshu', 'ROLE_USER')";
 		value = jdbcTemplate.update(sql2);
 		if(value > 0) {
-			System.out.println("User Credential inserted successfully!");
+			System.out.println("User authority inserted successfully!");
 		}
 		
-		String sql3 = "INSERT INTO authorities (username, authority) VALUES ('himanshu', 'ROLE_USER')";
+		String sql3 = "INSERT INTO authorities (username, authority) VALUES ('hrishik', 'ROLE_ADMIN')";
 		value = jdbcTemplate.update(sql3);
 		if(value > 0) {
-			System.out.println("User Credential inserted successfully!");
+			System.out.println("User authority inserted successfully!");
 		}
 	}
 
