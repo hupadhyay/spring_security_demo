@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
@@ -17,6 +18,9 @@ public class ApplnSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private DataSource dataSource;
+	
+	@Autowired
+	private UserDetailsService userDetailsService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -26,9 +30,16 @@ public class ApplnSecurityConfig extends WebSecurityConfigurerAdapter {
 		 * It uses method "usersByUsernameQuery" and "authoritiesByUsernameQuery" 
 		 * to query the user credential and authorities.
 		 */
-		auth.jdbcAuthentication().passwordEncoder(pwdEncoder).dataSource(dataSource)
-				.usersByUsernameQuery("select username, password, enabled from users where username =  ?")
-				.authoritiesByUsernameQuery("select username, authority from authorities where username = ?");
+//		auth.jdbcAuthentication().passwordEncoder(pwdEncoder).dataSource(dataSource)
+//				.usersByUsernameQuery("select username, password, enabled from users where username =  ?")
+//				.authoritiesByUsernameQuery("select username, authority from authorities where username = ?");
+		
+		/*
+		 * -- Method No 2 --
+		 * JDBC Authentication: the below code will use UserDetail service to authenticate user. This method is 
+		 * widely use in software industries to authenticate and authorize the the user.
+		 */
+		auth.userDetailsService(userDetailsService).passwordEncoder(pwdEncoder);
 	}
 
 
