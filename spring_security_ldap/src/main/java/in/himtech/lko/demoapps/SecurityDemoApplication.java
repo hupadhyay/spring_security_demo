@@ -1,13 +1,13 @@
-package in.himtech.lko.medicalstore;
+package in.himtech.lko.demoapps;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MedicalstoreApplication {
+public class SecurityDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MedicalstoreApplication.class, args);
+		SpringApplication.run(SecurityDemoApplication.class, args);
 	}
 
 }

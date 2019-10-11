@@ -1,60 +1,54 @@
 package in.himtech.lko.demoapps.config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import in.himtech.lko.demoapps.jwt.JwtAuthenticationEntryPoint;
+import in.himtech.lko.demoapps.jwt.JwtRequestFilter;
 
 @EnableWebSecurity
 public class ApplnSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private PasswordEncoder pwdEncoder;
-
-//	@Autowired
-//	private DataSource dataSource;
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+	
+	@Autowired
+	private JwtRequestFilter jwtRequestFilter;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		/*
-		 * -- Method No 1 --
-		 * JDBC Authentication: the below code will use schema.sql to create schema
-		 * It uses method "usersByUsernameQuery" and "authoritiesByUsernameQuery" 
-		 * to query the user credential and authorities.
-		 */
-//		auth.jdbcAuthentication().passwordEncoder(pwdEncoder).dataSource(dataSource)
-//				.usersByUsernameQuery("select username, password, enabled from users where username =  ?")
-//				.authoritiesByUsernameQuery("select username, authority from authorities where username = ?");
-		
-		/*
-		 * -- Method No 2 --
-		 * JDBC Authentication: the below code will use UserDetail service to authenticate user. This method is 
-		 * widely use in software industries to authenticate and authorize the the user.
-		 */
 		auth.userDetailsService(userDetailsService).passwordEncoder(pwdEncoder);
 	}
-
+	
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-			.antMatchers("/admin")
-				.hasRole("ADMIN")
-			.antMatchers("/user")
-				.hasAnyRole("ADMIN", "USER")
-			.antMatchers("/all")
-				.permitAll()
-			.antMatchers("/**")
-				.permitAll()
-			.and()
-			.formLogin();
+		http.csrf().disable()
+			.authorizeRequests().antMatchers("/authenticate").permitAll()
+			.anyRequest().authenticated().and()
+			.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+			.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		
+		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 }

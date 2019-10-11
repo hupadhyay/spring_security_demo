@@ -26,6 +26,7 @@
 		<module>spring_security_model</module>
 		<module>spring_security_jwt</module>
 		<module>spring_security_oauth</module>
+		<module>spring_security_ldap</module>
 	</modules>
 
 	<dependencies>
