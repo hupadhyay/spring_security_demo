@@ -36,7 +36,7 @@ public class JwtTokenUtil {
 
 	public boolean validateToken(String jwtToken, UserDetails userDetails) {
 		final String userName = getUsernameFromToken(jwtToken);
-		return userName.equals(userDetails.getUsername()) && getExpirationDateFromToken(jwtToken).before(new Date());
+		return userName.equals(userDetails.getUsername()) && !getExpirationDateFromToken(jwtToken).before(new Date());
 	}
 
 	public String generateToken(UserDetails userDetails) {
