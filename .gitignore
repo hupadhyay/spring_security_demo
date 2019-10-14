@@ -26,6 +26,14 @@ spring_security_jwt/target/**
 spring_security_jwt/mvnw.cmd
 spring_security_jwt/mvnw*
 
+spring_security_jwt_refresh/.classpath
+spring_security_jwt_refresh/.project
+spring_security_jwt_refresh/.settings/**
+spring_security_jwt_refresh/.mvn/**
+spring_security_jwt_refresh/target/**
+spring_security_jwt_refresh/mvnw.cmd
+spring_security_jwt_refresh/mvnw*
+
 spring_security_oauth/.classpath
 spring_security_oauth/.project
 spring_security_oauth/.settings/**

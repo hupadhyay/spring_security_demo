@@ -25,8 +25,8 @@
 		<module>basic_spring_security</module>
 		<module>spring_security_model</module>
 		<module>spring_security_jwt</module>
+		<module>spring_security_jwt_refresh</module>
 		<module>spring_security_oauth</module>
-		<module>spring_security_ldap</module>
 	</modules>
 
 	<dependencies>

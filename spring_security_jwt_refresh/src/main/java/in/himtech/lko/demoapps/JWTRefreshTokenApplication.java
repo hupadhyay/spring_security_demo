@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class SecurityDemoApplication implements CommandLineRunner {
+public class JWTRefreshTokenApplication implements CommandLineRunner {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -17,7 +17,7 @@ public class SecurityDemoApplication implements CommandLineRunner {
 	private PasswordEncoder pwdEncoder;
 
 	public static void main(String[] args) {
-		SpringApplication.run(SecurityDemoApplication.class, args);
+		SpringApplication.run(JWTRefreshTokenApplication.class, args);
 	}
 
 	@Override
