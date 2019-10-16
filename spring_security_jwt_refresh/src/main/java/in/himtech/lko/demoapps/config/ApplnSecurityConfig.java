@@ -47,6 +47,7 @@ public class ApplnSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 			.authorizeRequests().antMatchers("/authenticate").permitAll()
+			.antMatchers("/token/refresh").permitAll()
 			.anyRequest().authenticated().and()
 			.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
 			.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
