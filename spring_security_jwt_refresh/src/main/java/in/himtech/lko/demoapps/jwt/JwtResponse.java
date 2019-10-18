@@ -6,23 +6,23 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class JwtResponse {
 
-	private final String jwttoken;
+	private final String accessToken;
 	
 	private final String refreshToken;
 
 	public JwtResponse(String accessToken) {
-		this.jwttoken = accessToken;
+		this.accessToken = accessToken;
 		this.refreshToken = null;
 	}
 	
 	public JwtResponse(String accessToken, String refreshToken) {
-		this.jwttoken = accessToken;
+		this.accessToken = accessToken;
 		this.refreshToken = refreshToken;
 	}
 	
 
-	public String getToken() {
-		return this.jwttoken;
+	public String getAccessToken() {
+		return this.accessToken;
 	}
 	
 	public String getRefreshToken() {

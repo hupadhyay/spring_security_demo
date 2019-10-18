@@ -15,7 +15,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtTokenUtil {
 
-	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+	@Value("${jwt.token.access.timeout}")
+	public long accessTokenValidity = 5 * 60 * 60;
 
 	@Value("${jwt.secret}")
 	private String secret;
@@ -42,7 +43,7 @@ public class JwtTokenUtil {
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
 		return Jwts.builder().setClaims(claims).setSubject(userDetails.getUsername())
-				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+				.setExpiration(new Date(System.currentTimeMillis() + accessTokenValidity * 1000))
 				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 

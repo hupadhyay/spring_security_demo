@@ -26,7 +26,7 @@ public class RefreshTokenDao {
 	}
 
 	public RefreshToken findRefreshToken(String token) {
-		String sqlStmt = "select token, username, milites from ref_token where token =  ?";
+		String sqlStmt = "select token, username, millies from ref_token where token =  ?";
 		
 		try {
 			return jdbcTemplate.queryForObject(sqlStmt, new Object[] {token}, (rs, rowNum) ->{
